@@ -15,7 +15,9 @@ console.log("computer's selection is " + computerChoice);
 
 function playRound(playerSelection, computerSelection) {
   // console.log('you chose ' + playerSelection);
-
+  alert(
+    `player's choice -> ${playerSelection} | computer's choice -> ${computerSelection}`
+  );
   if (playerSelection === 'rock' && computerSelection == 'paper') {
     return 'You loose! Paper beats rock';
   } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
@@ -52,7 +54,7 @@ function game() {
         'Enter your choice among rock, paper or scissors'
       ).toLowerCase();
     } while (!checkPlayerInput(playerChoice));
-    console.log(playRound(playerChoice, computerChoice));
+    alert(playRound(playerChoice, computerChoice));
   }
 }
 game();
