@@ -35,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-let playerSelection;
+let playerChoice;
 
 function checkPlayerInput(playerInput) {
   return playerInput === 'rock' ||
@@ -48,11 +48,11 @@ function checkPlayerInput(playerInput) {
 function game() {
   for (let i = 0; i < 5; i++) {
     do {
-      playerSelection = prompt(
+      playerChoice = prompt(
         'Enter your choice among rock, paper or scissors'
       ).toLowerCase();
-    } while (!checkPlayerInput(playerSelection));
-    console.log(playRound(playerSelection, computerChoice));
+    } while (!checkPlayerInput(playerChoice));
+    console.log(playRound(playerChoice, computerChoice));
   }
 }
 game();
