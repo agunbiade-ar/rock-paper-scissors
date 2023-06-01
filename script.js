@@ -11,26 +11,28 @@ let computerScoreUI = document.getElementById('computer-score');
 computerScoreUI.textContent = 0;
 
 let playerScore = 0,
-  computerScore = 0;
+  computerScore = 0,
+  winScore = 3;
 
 rockBtn.addEventListener('click', function () {
   result.textContent = playRound('rock', getComputerChoice());
+  resetGame();
 });
 
 paperBtn.addEventListener('click', function () {
-  resetGame();
   result.textContent = playRound('paper', getComputerChoice());
+  resetGame();
 });
 
 scissorsBtn.addEventListener('click', function () {
-  resetGame();
   result.textContent = playRound('scissors', getComputerChoice());
+  resetGame();
 });
 
 randomBtn.addEventListener('click', function () {
-  resetGame();
   let randomChoice = getComputerChoice();
   result.textContent = playRound(randomChoice, getComputerChoice());
+  resetGame();
 });
 
 let choices = ['rock', 'paper', 'scissors'];
@@ -91,19 +93,18 @@ function checkPlayerInput(playerInput) {
 }
 
 function resetGame() {
-  if (playerScore == 2) {
-    // console.log('player ' + playerScore);
-    alert('You won!');
-  }
-
-  if (computerScore == 2) {
-    // console.log('computer ' + computerScore);
-    alert('Computer won!');
-  }
-
-  if (playerScore == 5 || computerScore == 5) {
-    playerScoreUI.textContent = playerScore = 0;
-    computerScoreUI.textContent = computerScore = 0;
-    result.textContent = '';
+  if (playerScore == winScore || computerScore == winScore) {
+    setTimeout(() => {
+      let text =
+        playerScore > computerScore
+          ? `Player wins game of first to ${winScore}`
+          : `Computer wins game of first to ${winScore}`;
+      alert(text);
+      playerScore = 0;
+      playerScoreUI.textContent = playerScore;
+      computerScore = 0;
+      computerScoreUI.textContent = computerScore;
+      result.textContent = '';
+    });
   }
 }
